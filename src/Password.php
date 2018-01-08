@@ -14,7 +14,7 @@ class Password {
     {
         $buildCriteria = $this->manager->buildCriteria($criteria, $occurence);
 
-		$this->criteriasAggregator[] = $buildCriteria;
+        $this->criteriasAggregator[] = $buildCriteria;
     }   
 
     public function generate()
