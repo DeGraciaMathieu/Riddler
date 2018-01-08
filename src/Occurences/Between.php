@@ -2,26 +2,12 @@
 
 namespace DeGraciaMathieu\Riddler\Occurences;
     
-class Between
+class Between extends Occurence
 {
     protected $size;
 
-    public function __construct($size, $size2)
+    public function __construct($smaller, $bigger)
     {
-        $this->size = rand($size, $size2);
-    }
-
-    public function parse(array $dictionary)
-    {
-        $tmp = [];
-
-        for ($i=0; $i < $this->size; $i++) {
-
-            shuffle($dictionary);
-
-            $tmp[] = $dictionary[0];
-        }
-
-       return $tmp;
+        $this->size = rand($smaller, $bigger);
     }
 }
