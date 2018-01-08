@@ -2,7 +2,7 @@
 
 namespace DeGraciaMathieu\Riddler;
 
-use Illuminate\Support\Collection;
+use DeGraciaMathieu\Riddler\Password;
 use Illuminate\Support\ServiceProvider;
 
 class RiddlerServiceProvider extends ServiceProvider{
@@ -21,6 +21,8 @@ class RiddlerServiceProvider extends ServiceProvider{
 
     public function register()
     {
-
+        $this->app->bind(Password::class, function($app) {
+            return new Password();
+        });
     }
 }
