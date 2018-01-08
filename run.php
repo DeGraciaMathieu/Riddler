@@ -1,31 +1,18 @@
-# DeGraciaMathieu/Riddler
+<?php
 
-Password generator service for Laravel 5
- 
-## Installation
- 
-Run in console below command to download package to your project:
+require 'vendor\autoload.php';
 
-```
-composer require degraciamathieu/riddler
-```
- 
-## Configuration
- 
-### For Laravel 5
+use \DeGraciaMathieu\Riddler\Password;
+use \DeGraciaMathieu\Riddler\Criterias\AccentedLetter;
+use \DeGraciaMathieu\Riddler\Criterias\Letter;
+use \DeGraciaMathieu\Riddler\Criterias\UppercaseLetter;
+use \DeGraciaMathieu\Riddler\Criterias\Digit;
+use \DeGraciaMathieu\Riddler\Criterias\Number;
+use \DeGraciaMathieu\Riddler\Criterias\SpecialCharacter;
+use \DeGraciaMathieu\Riddler\Occurences\Strict;
+use \DeGraciaMathieu\Riddler\Occurences\Between;
 
-In `/config/app.php` add RiddlerServiceProvider:
-```
-DeGraciaMathieu\Riddler\RiddlerServiceProvider::class,
-```
- 
-# Usage
- 
-In progress...
 
-# Examples
- 
-```php
 $password = new Password;
 $password->addCriteria(new Digit(), new Strict(10));
 ($password->generate()); // "4731412968"
@@ -68,4 +55,3 @@ $password->addCriteria(new UppercaseLetter(), new Strict(5));
 $password->addCriteria(new AccentedLetter(), new Strict(5));
 $password->addCriteria(new SpecialCharacter(), new Strict(5));
 $password->generate(); // "uELòp§iO°L§7b~â]3ûë7èm96A"
-```
