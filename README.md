@@ -1,5 +1,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d662a4fa526a4a709d3ad1991cba2533)](https://www.codacy.com/app/DeGraciaMathieu/Riddler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeGraciaMathieu/Riddler&amp;utm_campaign=Badge_Grade)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/degraciamathieu/riddler/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/?branch=master)
 
 
 # DeGraciaMathieu/Riddler
