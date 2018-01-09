@@ -14,21 +14,11 @@ Run in console below command to download package to your project:
 ```
 composer require degraciamathieu/riddler
 ```
- 
-## Configuration
- 
-### For Laravel 5
-
-In `/config/app.php` add RiddlerServiceProvider:
-```
-DeGraciaMathieu\Riddler\RiddlerServiceProvider::class,
-```
- 
-# Usage
+## Usage
  
 In progress...
 
-# Examples
+## Examples
  
 ```php
 $password = new Password;
