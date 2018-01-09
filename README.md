@@ -30,7 +30,7 @@ In progress...
 ```php
 $password = new Password;
 $password->addCriteria(new Digit(), new Strict(10));
-($password->generate()); // "4731412968"
+$password->generate(); // "4731412968"
 
 $password = new Password;
 $password->addCriteria(new Digit(), new Between(8, 12));
