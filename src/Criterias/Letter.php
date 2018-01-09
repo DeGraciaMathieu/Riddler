@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Criterias;
     
-class Letter
+use DeGraciaMathieu\Riddler\Contracts\Criteria;
+
+class Letter implements Criteria
 {
     public function handle()
     {

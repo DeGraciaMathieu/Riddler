@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Occurences;
     
-class Between extends Occurence
+use DeGraciaMathieu\Riddler\Contracts\Occurence;
+
+class Between extends BaseOccurence
 {
     protected $size;
 

@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Criterias;
     
-class Digit
+use DeGraciaMathieu\Riddler\Contracts\Criteria;
+    
+class Digit implements Criteria
 {
     public function handle()
     {

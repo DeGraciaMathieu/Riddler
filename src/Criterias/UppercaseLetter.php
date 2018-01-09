@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Criterias;
     
-class UppercaseLetter
+use DeGraciaMathieu\Riddler\Contracts\Criteria;
+
+class UppercaseLetter implements Criteria
 {
     public function handle()
     {

@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Occurences;
     
-class Strict extends Occurence
+use DeGraciaMathieu\Riddler\Contracts\Occurence;
+
+class Strict extends BaseOccurence
 {
     protected $size;
 

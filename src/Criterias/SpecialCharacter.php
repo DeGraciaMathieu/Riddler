@@ -2,10 +2,12 @@
 
 namespace DeGraciaMathieu\Riddler\Criterias;
     
-class SpecialCharacter
+use DeGraciaMathieu\Riddler\Contracts\Criteria;
+
+class SpecialCharacter implements Criteria
 {
     public function handle()
     {
-        return ['[','&','+','#','|','^','°','=','!','@','%','*', '?','_','~','-','§',':',';','.',']'];
+        return ['[','&','+','#','|','^','°','=','!','@','%','*','?','_','~','-','§',':',';','.',']'];
     }
 }

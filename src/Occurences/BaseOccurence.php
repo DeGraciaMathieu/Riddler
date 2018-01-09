@@ -2,7 +2,7 @@
 
 namespace DeGraciaMathieu\Riddler\Occurences;
     
-abstract class Occurence
+abstract class BaseOccurence
 {
     public function parse(array $dictionary)
     {

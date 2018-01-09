@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Criterias;
     
-class AccentedLetter
+use DeGraciaMathieu\Riddler\Contracts\Criteria;
+
+class AccentedLetter  implements Criteria
 {
     public function handle()
     {
