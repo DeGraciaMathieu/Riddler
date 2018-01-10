@@ -32,7 +32,25 @@ class Test extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function FormatOnly()
+    public function alphanumericPasswordOnly()
+    {
+        $pw = new Password();
+
+        $pw->addCriteria(new Criterias\Letter(), new Occurences\Strict(5));
+        $pw->addCriteria(new Criterias\UppercaseLetter(), new Occurences\Strict(5));
+        $pw->addCriteria(new Criterias\Digit(), new Occurences\Strict(5));
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(15, strlen($str));
+
+        $this->assertRegExp('/[a-zA-Z0-9]/', $str);
+    }
+
+    /** @test */
+    public function longDigitFormatOnly()
     {
         $pw = new Password();
 
