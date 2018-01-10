@@ -15,7 +15,7 @@ class Password {
         $this->manager = new Manager;
     }
 
-    public function addCriteria($criteria, $occurence = null)
+    public function addCriteria($criteria, $occurence)
     {
         $buildCriteria = $this->manager->buildCriteria($criteria, $occurence);
 

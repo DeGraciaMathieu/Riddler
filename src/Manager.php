@@ -2,14 +2,16 @@
 
 namespace DeGraciaMathieu\Riddler;
 
+use DeGraciaMathieu\Riddler\Contracts;
+
 class Manager {
 
-    public function buildCriteria($criteria, $occurence)
+    public function buildCriteria(Contracts\Criteria $criteria, Contracts\Occurence $occurence)
     {
         return new CriteriaBuilder($criteria, $occurence);
     }
 
-    public function subCriteria(array $criteriaBuilderList, $subCriteria)
+    public function subCriteria(array $criteriaBuilderList, Contracts\Criteria $subCriteria)
     {
         return array_filter(function($criteriaBuilder) use($subCriteria) {
             return ! $criteriaBuilder->criteria instanceof $subCriteria;

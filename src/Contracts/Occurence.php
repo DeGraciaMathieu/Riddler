@@ -4,5 +4,5 @@ namespace DeGraciaMathieu\Riddler\Contracts;
     
 interface Occurence
 {
-	public function parse();
+	public function parse(array $dictionary);
 }
