@@ -5,7 +5,7 @@
 
 # DeGraciaMathieu/Riddler
 
-Password generator service for Laravel 5
+Password generator service
  
 ## Installation
  
