@@ -11,9 +11,9 @@ class StrongAlphanumeric implements Format
     public function handle()
     {
         return [
-            [new Criterias\Digit(), new Occurences\Strict(5)],
-            [new Criterias\Letter(), new Occurences\Strict(5)],
-            [new Criterias\UppercaseLetter(), new Occurences\Strict(5)]
+            [new Criterias\Digit(), new Occurences\Strict(10)],
+            [new Criterias\Letter(), new Occurences\Strict(10)],
+            [new Criterias\UppercaseLetter(), new Occurences\Strict(10)]
         ];
     }
 }

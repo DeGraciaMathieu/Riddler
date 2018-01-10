@@ -78,10 +78,22 @@ use DeGraciaMathieu\Riddler\Formats;
 use DeGraciaMathieu\Riddler\Password;
 
 $password = new Password();
+$password->addFormat(new Formats\LongDigit());
+$password->generate(); // "075197457894437657185665450123"
+
+$password = new Password();
+$password->addFormat(new Formats\SmallAlphanumeric());
+$password->generate(); // "mA5M6ap167gRTeE"
+
+$password = new Password();
 $password->addFormat(new Formats\StrongAlphanumeric());
-$password->generate(); // "64Y6o54tjxEtDER"
+$password->generate(); // "492OHwdJEdDT5Lb89zhY9c26j4XhmX"
 
 $password = new Password();
 $password->addFormat(new Formats\MixedStrong());
-$password->generate(); // "9H_ÔïH8Åñô*UÂsQ&kÌÑK8YWõÍ+85éj&ìg1Â!a"
+$password->generate(); // "41súdSXWHV65k2G0lr0õèñzåY"
+
+$password = new Password();
+$password->addFormat(new Formats\MixedComplex());
+$password->generate(); // "Äûc[%ÀÁkWï_1V8k3uw*3§ÔEaAÍ+5§ôåûWYI6äÕ7"
 ```
