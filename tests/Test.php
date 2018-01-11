@@ -44,10 +44,62 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertNotEmpty($str);
 
-        $this->assertEquals(15, strlen($str));
+        $this->assertEquals(15, mb_strlen($str));
 
         $this->assertRegExp('/[a-zA-Z0-9]/', $str);
     }
+
+    /** @test */
+    public function accentedLetterOnly()
+    {
+        $pw = new Password();
+
+        $accentedLetter = new Criterias\AccentedLetter();
+
+        $pw->addCriteria($accentedLetter, new Occurences\Strict(5));
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(5, mb_strlen($str));
+
+        $this->assertRegExp('/[' . implode($accentedLetter->handle()) . ']{5}/', $str);        
+    }
+
+    /** @test */
+    public function accentedUppercaseLetterOnly()
+    {
+        $pw = new Password();
+
+        $accentedUppercaseLetter = new Criterias\AccentedUppercaseLetter();
+
+        $pw->addCriteria($accentedUppercaseLetter, new Occurences\Strict(5));
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(5, mb_strlen($str));
+
+        $this->assertRegExp('/[' . implode($accentedUppercaseLetter->handle()) . ']{5}/', $str);        
+    }    
+
+    /** @test */
+    public function specialCharacterOnly()
+    {
+        $pw = new Password();
+
+        $pw->addCriteria(new Criterias\SpecialCharacter(), new Occurences\Strict(5));
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(5, mb_strlen($str));
+
+        $this->assertRegExp('/[\[\&\+\#\|\^\°\=\!\@\%\*\?\_\~\-\§\:\;\.\]]{5}/', $str);        
+    }   
 
     /** @test */
     public function longDigitFormatOnly()
@@ -62,6 +114,71 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertRegExp('/\d{30}/', $str);
     }
+
+    /** @test */
+    public function smallAlphanumericFormatOnly()
+    {
+        $pw = new Password();
+
+        $pw->addFormat(new Formats\SmallAlphanumeric());
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(15, mb_strlen($str));
+
+        $this->assertRegExp('/[a-zA-Z0-9]/', $str);
+    }
+
+    /** @test */
+    public function strongAlphanumericFormatOnly()
+    {
+        $pw = new Password();
+
+        $pw->addFormat(new Formats\StrongAlphanumeric());
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(30, mb_strlen($str));
+
+        $this->assertRegExp('/[a-zA-Z0-9]/', $str);
+    }
+
+    /** @test */
+    public function mixedStrongFormatOnly()
+    {
+        $pw = new Password();
+
+        $pw->addFormat(new Formats\MixedStrong());
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        // $this->assertEquals(30, mb_strlen($str));
+
+        // $this->assertRegExp('/[a-zA-Z0-9]/', $str);
+    }
+
+    /** @test */
+    public function mixedComplexFormatOnly()
+    {
+        $pw = new Password();
+
+        $pw->addFormat(new Formats\MixedComplex());
+
+        $str = $pw->generate();
+
+        $this->assertNotEmpty($str);
+
+        // $this->assertEquals(30, mb_strlen($str));
+
+        // $this->assertRegExp('/[a-zA-Z0-9]/', $str);
+    }
+
 
     /** @test */
     public function digitPasswordOnly()
