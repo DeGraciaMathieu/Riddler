@@ -24,46 +24,46 @@ In progress...
 
  ```php
 $password = new Password;
-$password->addCriteria(new Criterias\Digit(), new Occurences\Strict(10));
+$password->addCriteria(new Digit(), new Strict(10));
 $password->generate(); // "4731412968"
 
 $password = new Password;
-$password->addCriteria(new Criterias\Letter(), new Occurences\Strict(20));
+$password->addCriteria(new Letter(), new Strict(20));
 $password->generate(); // "tugmdzkgohnnkfrxuqns"
 
 $password = new Password;
-$password->addCriteria(new Criterias\UppercaseLetter(), new Occurences\Strict(20));
+$password->addCriteria(new UppercaseLetter(), new Strict(20));
 $password->generate(); // "JDXIRCEBWDPZLCWIJNYZ"
 
 $password = new Password;
-$password->addCriteria(new Criterias\UppercaseLetter(), new Occurences\Between(5, 7));
-$password->addCriteria(new Criterias\Letter(), new Occurences\Between(5, 7));
+$password->addCriteria(new UppercaseLetter(), new Between(5, 7));
+$password->addCriteria(new Letter(), new Between(5, 7));
 $password->generate(); // "xIXPstuqTZmb"
 
 $password = new Password;
-$password->addCriteria(new Criterias\SpecialCharacter(), new Occurences\Strict(15));
+$password->addCriteria(new SpecialCharacter(), new Strict(15));
 $password->generate(); // "#^_=%§][:@_]^%="
 
 $password = new Password;
-$password->addCriteria(new Criterias\AccentedLetter(), new Occurences\Strict(15));
+$password->addCriteria(new AccentedLetter(), new Strict(15));
 $password->generate(); // "üãöîâüîüûàóäùéú"
 
 $password = new Password;
-$password->addCriteria(new Criterias\AccentedUppercaseLetter(), new Occurences\Strict(15));
+$password->addCriteria(new AccentedUppercaseLetter(), new Strict(15));
 $password->generate(); // "ÂÚÏÝÒÌÀÂÜÝÛËÍÊÌ"
 
 $password = new Password;
-$password->addCriteria(new Criterias\Digit(), new Occurences\Strict(5));
-$password->addCriteria(new Criterias\Letter(), new Occurences\Strict(5));
-$password->addCriteria(new Criterias\SpecialCharacter(), new Occurences\Between(5, 10));
+$password->addCriteria(new Digit(), new Strict(5));
+$password->addCriteria(new Letter(), new Strict(5));
+$password->addCriteria(new SpecialCharacter(), new Between(5, 10));
 $password->generate(); // "!186u;n&~§3r7hb|~?"
 
 $password = new Password;
-$password->addCriteria(new Criterias\Digit(), new Occurences\Between(5, 7));
-$password->addCriteria(new Criterias\Letter(), new Occurences\Between(5, 7));
-$password->addCriteria(new Criterias\UppercaseLetter(), new Occurences\Between(5, 7));
-$password->addCriteria(new Criterias\AccentedLetter(), new Occurences\Between(5, 7));
-$password->addCriteria(new Criterias\SpecialCharacter(), new Occurences\Between(5, 7));
+$password->addCriteria(new Digit(), new Between(5, 7));
+$password->addCriteria(new Letter(), new Between(5, 7));
+$password->addCriteria(new UppercaseLetter(), new Between(5, 7));
+$password->addCriteria(new AccentedLetter(), new Between(5, 7));
+$password->addCriteria(new SpecialCharacter(), new Between(5, 7));
 $password->generate(); // "uELòp§iO°L§7b~â]3ûë7èm96A"
 ```
 
