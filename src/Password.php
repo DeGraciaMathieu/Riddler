@@ -6,16 +6,15 @@ use DeGraciaMathieu\Riddler\Contracts;
 
 class Password {
 
-    protected $criterias;
+    protected $criterias = [];
     protected $manager;
 
     public function __construct()
     {
-        $this->criterias = [];
         $this->manager = new Manager;
     }
 
-    public function addCriteria($dictionary, $occurence)
+    public function addCriteria(Contracts\Dictionary $dictionary, Contracts\Occurence $occurence)
     {
         $buildCriteria = $this->manager->buildCriteria($dictionary, $occurence);
 
