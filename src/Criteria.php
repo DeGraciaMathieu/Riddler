@@ -4,6 +4,9 @@ namespace DeGraciaMathieu\Riddler;
 
 class Criteria {
 
+	protected $dictionary;
+	protected $occurrence;
+
     public function __construct($dictionary, $occurrence)
     {
         $this->dictionary = $dictionary;
