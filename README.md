@@ -17,7 +17,29 @@ composer require degraciamathieu/riddler
 ```
 ## Usage
  
-In progress...
+```php
+require 'vendor\autoload.php';
+
+use DeGraciaMathieu\Riddler\Password;
+use DeGraciaMathieu\Riddler\Dictionaries;
+use DeGraciaMathieu\Riddler\Occurences;
+
+$password = new Password();
+$password->addCriteria(new Dictionaries\Digit(), new Occurences\Strict(5));
+$password->addCriteria(new Dictionaries\Letter(), new Occurences\Between(3, 6));
+$password->generate();
+```
+
+```php
+require 'vendor\autoload.php';
+
+use DeGraciaMathieu\Riddler\Password;
+use DeGraciaMathieu\Riddler\Formats;
+
+$password = new Password();
+$password->addFormat(new Formats\StrongAlphanumeric());
+$password->generate();
+```
 
 ## Examples
 ### Classics
