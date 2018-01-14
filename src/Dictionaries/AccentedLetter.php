@@ -1,10 +1,10 @@
 <?php
 
-namespace DeGraciaMathieu\Riddler\Criterias;
+namespace DeGraciaMathieu\Riddler\Dictionaries;
     
-use DeGraciaMathieu\Riddler\Contracts\Criteria;
+use DeGraciaMathieu\Riddler\Contracts\Dictionary;
 
-class AccentedLetter  implements Criteria
+class AccentedLetter  implements Dictionary
 {
     public function handle()
     {

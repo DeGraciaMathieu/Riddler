@@ -2,7 +2,7 @@
 
 namespace DeGraciaMathieu\Riddler\Contracts;
     
-interface Criteria
+interface Dictionary
 {
 	public function handle();
 }

@@ -2,8 +2,8 @@
 
 namespace DeGraciaMathieu\Riddler\Formats;
 
-use DeGraciaMathieu\Riddler\Criterias;
 use DeGraciaMathieu\Riddler\Occurences;
+use DeGraciaMathieu\Riddler\Dictionaries;
 use DeGraciaMathieu\Riddler\Contracts\Format;
 
 class LongDigit implements Format
@@ -11,7 +11,7 @@ class LongDigit implements Format
     public function handle()
     {
         return [
-            [new Criterias\Digit(), new Occurences\Strict(30)]
+            [new Dictionaries\Digit(), new Occurences\Strict(30)]
         ];
     }
 }

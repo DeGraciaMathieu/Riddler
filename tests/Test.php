@@ -1,9 +1,9 @@
 <?php
 
-use DeGraciaMathieu\Riddler\Password;
-use DeGraciaMathieu\Riddler\Criterias;
 use DeGraciaMathieu\Riddler\Formats;
+use DeGraciaMathieu\Riddler\Password;
 use DeGraciaMathieu\Riddler\Occurences;
+use DeGraciaMathieu\Riddler\Dictionaries;
 
 class Test extends \PHPUnit\Framework\TestCase
 {
@@ -22,7 +22,7 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $pw->addCriteria(new Criterias\Letter(), new Occurences\Strict(10));
+        $pw->addCriteria(new Dictionaries\Letter(), new Occurences\Strict(10));
 
         $str = $pw->generate();
 
@@ -36,9 +36,9 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $pw->addCriteria(new Criterias\Letter(), new Occurences\Strict(5));
-        $pw->addCriteria(new Criterias\UppercaseLetter(), new Occurences\Strict(5));
-        $pw->addCriteria(new Criterias\Digit(), new Occurences\Strict(5));
+        $pw->addCriteria(new Dictionaries\Letter(), new Occurences\Strict(5));
+        $pw->addCriteria(new Dictionaries\UppercaseLetter(), new Occurences\Strict(5));
+        $pw->addCriteria(new Dictionaries\Digit(), new Occurences\Strict(5));
 
         $str = $pw->generate();
 
@@ -54,7 +54,7 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $accentedLetter = new Criterias\AccentedLetter();
+        $accentedLetter = new Dictionaries\AccentedLetter();
 
         $pw->addCriteria($accentedLetter, new Occurences\Strict(5));
 
@@ -72,7 +72,7 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $accentedUppercaseLetter = new Criterias\AccentedUppercaseLetter();
+        $accentedUppercaseLetter = new Dictionaries\AccentedUppercaseLetter();
 
         $pw->addCriteria($accentedUppercaseLetter, new Occurences\Strict(5));
 
@@ -90,7 +90,7 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $pw->addCriteria(new Criterias\SpecialCharacter(), new Occurences\Strict(5));
+        $pw->addCriteria(new Dictionaries\SpecialCharacter(), new Occurences\Strict(5));
 
         $str = $pw->generate();
 
@@ -185,7 +185,7 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $pw->addCriteria(new Criterias\Digit(), new Occurences\Strict(10));
+        $pw->addCriteria(new Dictionaries\Digit(), new Occurences\Strict(10));
 
         $str = $pw->generate();
 

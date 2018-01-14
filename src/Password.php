@@ -6,26 +6,21 @@ use DeGraciaMathieu\Riddler\Contracts;
 
 class Password {
 
-    protected $criteriasAggregator;
+    protected $criterias;
     protected $manager;
 
     public function __construct()
     {
-        $this->criteriasAggregator = [];
+        $this->criterias = [];
         $this->manager = new Manager;
     }
 
-    public function addCriteria($criteria, $occurence)
+    public function addCriteria($dictionary, $occurence)
     {
-        $buildCriteria = $this->manager->buildCriteria($criteria, $occurence);
+        $buildCriteria = $this->manager->buildCriteria($dictionary, $occurence);
 
-        $this->criteriasAggregator[] = $buildCriteria;
+        $this->criterias[] = $buildCriteria;
     }   
-
-    public function subCriteria(Contracts\Criteria $subCriteria)
-    {
-        $this->criteriasAggregator = $this->manager->subCriteria($this->criteriasAggregator, $subCriteria);
-    }
 
     public function addFormat(Contracts\Format $format)
     {
@@ -38,6 +33,6 @@ class Password {
 
     public function generate()
     {
-        return $this->manager->generate($this->criteriasAggregator);
+        return $this->manager->generate($this->criterias);
     }	
 }
