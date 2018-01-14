@@ -1,10 +1,10 @@
 <?php
 
-namespace DeGraciaMathieu\Riddler\Occurences;
+namespace DeGraciaMathieu\Riddler\Occurrences;
     
-use DeGraciaMathieu\Riddler\Contracts\Occurence;
+use DeGraciaMathieu\Riddler\Contracts\Occurrence;
 
-class Between extends BaseOccurence implements Occurence
+class Between extends BaseOccurrence implements Occurrence
 {
     protected $size;
 

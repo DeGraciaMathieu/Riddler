@@ -6,9 +6,9 @@ use DeGraciaMathieu\Riddler\Contracts;
 
 class Manager {
 
-    public function buildCriteria(Contracts\Dictionary $dictionary, Contracts\Occurence $occurence)
+    public function buildCriteria(Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
-        return new Criteria($dictionary, $occurence);
+        return new Criteria($dictionary, $occurrence);
     }
 
     public function generate(array $criteriaBuilderList)

@@ -2,7 +2,7 @@
 
 namespace DeGraciaMathieu\Riddler\Contracts;
     
-interface Occurence
+interface Occurrence
 {
 	public function parse(array $dictionary);
 }

@@ -14,9 +14,9 @@ class Password {
         $this->manager = new Manager;
     }
 
-    public function addCriteria(Contracts\Dictionary $dictionary, Contracts\Occurence $occurence)
+    public function addCriteria(Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
-        $buildCriteria = $this->manager->buildCriteria($dictionary, $occurence);
+        $buildCriteria = $this->manager->buildCriteria($dictionary, $occurrence);
 
         $this->criterias[] = $buildCriteria;
     }   

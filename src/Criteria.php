@@ -4,14 +4,14 @@ namespace DeGraciaMathieu\Riddler;
 
 class Criteria {
 
-    public function __construct($dictionary, $occurence)
+    public function __construct($dictionary, $occurrence)
     {
         $this->dictionary = $dictionary;
-        $this->occurence = $occurence;
+        $this->occurrence = $occurrence;
     }
 
     public function build()
     {
-        return $this->occurence->parse($this->dictionary->handle());
+        return $this->occurrence->parse($this->dictionary->handle());
     }
 }

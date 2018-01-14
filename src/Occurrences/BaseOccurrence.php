@@ -1,8 +1,8 @@
 <?php
 
-namespace DeGraciaMathieu\Riddler\Occurences;
+namespace DeGraciaMathieu\Riddler\Occurrences;
     
-abstract class BaseOccurence
+abstract class BaseOccurrence
 {
     public function parse(array $dictionary)
     {
