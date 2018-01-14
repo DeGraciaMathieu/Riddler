@@ -23,10 +23,6 @@ In progress...
 ### Classics
 
  ```php
-use DeGraciaMathieu\Riddler\Password;
-use DeGraciaMathieu\Riddler\Criterias;
-use DeGraciaMathieu\Riddler\Occurences;
-
 $password = new Password;
 $password->addCriteria(new Criterias\Digit(), new Occurences\Strict(10));
 $password->generate(); // "4731412968"
@@ -74,9 +70,6 @@ $password->generate(); // "uELòp§iO°L§7b~â]3ûë7èm96A"
 ### Formats
 
 ```php
-use DeGraciaMathieu\Riddler\Formats;
-use DeGraciaMathieu\Riddler\Password;
-
 $password = new Password();
 $password->addFormat(new Formats\LongDigit());
 $password->generate(); // "075197457894437657185665450123"
