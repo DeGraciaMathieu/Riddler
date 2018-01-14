@@ -17,18 +17,41 @@ composer require degraciamathieu/riddler
 ```
 ## Usage
  
+A password is a set of one or more criteria composed of a dictionary and an occurrence. 
+
+The available dictionaries are :
+* AccentedLetter 
+* AccentedUppercaseLetter
+* Digit
+* Letter
+* SpecialCharacter
+* UppercaseLetter
+
+Available occurrences :
+* Strict
+* Between
+
 ```php
 require 'vendor\autoload.php';
 
 use DeGraciaMathieu\Riddler\Password;
 use DeGraciaMathieu\Riddler\Dictionaries;
-use DeGraciaMathieu\Riddler\Occurences;
+use DeGraciaMathieu\Riddler\Occurrences;
 
 $password = new Password();
-$password->addCriteria(new Dictionaries\Digit(), new Occurences\Strict(5));
-$password->addCriteria(new Dictionaries\Letter(), new Occurences\Between(3, 6));
+$password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(5));
+$password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 6));
 $password->generate();
 ```
+
+To build passwords faster, it is possible to use a set of prescinded criteria using the formats.
+
+Available formats :
+* LongDigit
+* MixedComplex
+* MixedStrong
+* SmallAlphanumeric
+* StrongAlphanumeric
 
 ```php
 require 'vendor\autoload.php';
@@ -41,10 +64,12 @@ $password->addFormat(new Formats\StrongAlphanumeric());
 $password->generate();
 ```
 
+It is possible to create its own class format implementing the interface DeGraciaMathieu\Riddler\Contracts\Format
+
 ## Examples
 ### Classics
 
- ```php
+```php
 $password = new Password;
 $password->addCriteria(new Digit(), new Strict(10));
 $password->generate(); // "4731412968"
