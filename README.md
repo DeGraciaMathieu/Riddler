@@ -1,9 +1,13 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d662a4fa526a4a709d3ad1991cba2533)](https://www.codacy.com/app/DeGraciaMathieu/Riddler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeGraciaMathieu/Riddler&amp;utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/degraciamathieu/riddler/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/?branch=master)
-
-
+<p align="center">
+<img src="https://i62.servimg.com/u/f62/11/13/61/32/ridler10.png" width="300">
+</p>
+<p align="center">
+<a href="https://www.codacy.com/app/DeGraciaMathieu/Riddler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeGraciaMathieu/Riddler&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/d662a4fa526a4a709d3ad1991cba2533" alt="Codacy Badge"></a>
+<a href="https://scrutinizer-ci.com/g/degraciamathieu/riddler/?branch=master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/build-status/master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/build.png?b=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/?branch=master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/coverage.png?b=master" alt="Code Coverage"></a>
+</p>
+ 
 # DeGraciaMathieu/Riddler
 
 Password generator service
