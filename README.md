@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://i62.servimg.com/u/f62/11/13/61/32/ridler10.png" width="300">
+<img src="https://i62.servimg.com/u/f62/11/13/61/32/riddle10.png" width="300">
 </p>
 <p align="center">
 <a href="https://www.codacy.com/app/DeGraciaMathieu/Riddler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeGraciaMathieu/Riddler&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/d662a4fa526a4a709d3ad1991cba2533" alt="Codacy Badge"></a>
