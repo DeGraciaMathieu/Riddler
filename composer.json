@@ -1,6 +1,6 @@
 {
   "name": "degraciamathieu/riddler",
-  "description": "",
+  "description": "Password generator service",
   "homepage": "https://github.com/degraciamathieu/riddler",
   "license": "MIT",
   "keywords": [
