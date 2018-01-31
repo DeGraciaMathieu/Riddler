@@ -7,6 +7,7 @@
 <a href="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/build-status/master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/build.png?b=master" alt="Build Status"></a>
 <a href="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/?branch=master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/coverage.png?b=master" alt="Code Coverage"></a>
 <a href="https://packagist.org/packages/degraciamathieu/riddler"><img src="https://img.shields.io/packagist/v/degraciamathieu/riddler.svg?style=flat-square" alt="Latest Version on Packagist"></a>
+<a href="https://codeclimate.com/github/DeGraciaMathieu/Riddler/maintainability"><img src="https://api.codeclimate.com/v1/badges/306a5feb592e960c6d3e/maintainability" /></a>
 </p>
  
 # DeGraciaMathieu/Riddler
