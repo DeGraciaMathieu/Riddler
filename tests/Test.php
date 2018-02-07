@@ -225,8 +225,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $result = $strict->parse($dictionary);
 
         $this->assertTrue(is_array($result));
-        $this->assertTrue(count($result) >= 3);
-        $this->assertTrue(count($result) <= 5);
+        $this->assertTrue(count($result) >= 3 && count($result) <= 5);
         $this->assertContains($result[0], $dictionary);
         $this->assertContains($result[1], $dictionary);
         $this->assertContains($result[2], $dictionary);
