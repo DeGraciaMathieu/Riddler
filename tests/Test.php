@@ -90,7 +90,9 @@ class Test extends \PHPUnit\Framework\TestCase
     {
         $pw = new Password();
 
-        $pw->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Strict(5));
+        $specialCharacter = new Dictionaries\SpecialCharacter();
+
+        $pw->addCriteria($specialCharacter, new Occurrences\Strict(5));
 
         $str = $pw->generate();
 
@@ -98,7 +100,11 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(5, mb_strlen($str));
 
-        $this->assertRegExp('/[\[\&\+\#\|\^\°\=\!\@\%\*\?\_\~\-\§\:\;\.\]]{5}/', $str);        
+        $chars = array_map(function ($c) { 
+            return '\\' . $c; 
+        }, $specialCharacter->handle()); 
+
+        $this->assertRegExp('/[' . implode($chars) . ']{5}/', $str);        
     }   
 
     /** @test */
