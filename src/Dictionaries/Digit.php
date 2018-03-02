@@ -1,9 +1,9 @@
 <?php
 
 namespace DeGraciaMathieu\Riddler\Dictionaries;
-    
+
 use DeGraciaMathieu\Riddler\Contracts\Dictionary;
-    
+
 class Digit implements Dictionary
 {
     public function handle()
