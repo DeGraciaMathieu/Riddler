@@ -1,6 +1,7 @@
 <?php
 
 use DeGraciaMathieu\Riddler\Formats;
+use DeGraciaMathieu\Riddler\Criteria;
 use DeGraciaMathieu\Riddler\Password;
 use DeGraciaMathieu\Riddler\Occurrences;
 use DeGraciaMathieu\Riddler\Dictionaries;
@@ -203,32 +204,38 @@ class Test extends \PHPUnit\Framework\TestCase
     /** @test */
     public function strictOccurrences()
     {
-        $dictionary = ['a', 'b', 'c', 'd'];
+        $dictionary = new Dictionaries\Letter();
 
-        $strict = new Occurrences\Strict(5);
-        $result = $strict->parse($dictionary);
+        $occurrence = new Occurrences\Strict(5);
+
+        $criteria = new Criteria($dictionary, $occurrence);
+
+        $result = $criteria->build();
 
         $this->assertTrue(is_array($result));
         $this->assertEquals(5, count($result));
-        $this->assertContains($result[0], $dictionary);
-        $this->assertContains($result[1], $dictionary);
-        $this->assertContains($result[2], $dictionary);
-        $this->assertContains($result[3], $dictionary);
+        $this->assertContains($result[0], $dictionary->handle());
+        $this->assertContains($result[1], $dictionary->handle());
+        $this->assertContains($result[2], $dictionary->handle());
+        $this->assertContains($result[3], $dictionary->handle());
     }
 
     /** @test */
     public function betweenOccurrences()
     {
-        $dictionary = ['a', 'b', 'c', 'd'];
+        $dictionary = new Dictionaries\Letter();
 
-        $strict = new Occurrences\Between(3, 5);
-        $result = $strict->parse($dictionary);
+        $occurrence = new Occurrences\Between(3, 5);
+
+        $criteria = new Criteria($dictionary, $occurrence);
+
+        $result = $criteria->build();
 
         $this->assertTrue(is_array($result));
         $this->assertTrue(count($result) >= 3 && count($result) <= 5);
-        $this->assertContains($result[0], $dictionary);
-        $this->assertContains($result[1], $dictionary);
-        $this->assertContains($result[2], $dictionary);
+        $this->assertContains($result[0], $dictionary->handle());
+        $this->assertContains($result[1], $dictionary->handle());
+        $this->assertContains($result[2], $dictionary->handle());
     }
 
     /** @test */

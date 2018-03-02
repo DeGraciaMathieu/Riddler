@@ -15,7 +15,19 @@ class Criteria {
 
     public function build()
     {
-        return $this->occurrence->parse($this->dictionary->handle());
+        $dictionary = $this->dictionary->handle();
+        $size = $this->occurrence->size();
+
+        $tmp = [];
+
+        for ($i=0; $i < $size; $i++) {
+
+            shuffle($dictionary);
+
+            $tmp[] = $dictionary[0];
+        }
+
+        return $tmp;
     }
 
     /**
