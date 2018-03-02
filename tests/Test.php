@@ -64,7 +64,7 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(5, mb_strlen($str));
 
-        $this->assertRegExp('/[' . implode($accentedLetter->handle()) . ']{5}/', $str);        
+        $this->assertRegExp('/[' . implode($accentedLetter->handle()) . ']{5}/', $str);
     }
 
     /** @test */
@@ -82,8 +82,8 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(5, mb_strlen($str));
 
-        $this->assertRegExp('/[' . implode($accentedUppercaseLetter->handle()) . ']{5}/', $str);        
-    }    
+        $this->assertRegExp('/[' . implode($accentedUppercaseLetter->handle()) . ']{5}/', $str);
+    }
 
     /** @test */
     public function specialCharacterOnly()
@@ -100,12 +100,12 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(5, mb_strlen($str));
 
-        $chars = array_map(function ($c) { 
-            return '\\' . $c; 
-        }, $specialCharacter->handle()); 
+        $chars = array_map(function ($c) {
+            return '\\' . $c;
+        }, $specialCharacter->handle());
 
-        $this->assertRegExp('/[' . implode($chars) . ']{5}/', $str);        
-    }   
+        $this->assertRegExp('/[' . implode($chars) . ']{5}/', $str);
+    }
 
     /** @test */
     public function longDigitFormatOnly()
@@ -198,7 +198,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->assertNotEmpty($str);
 
         $this->assertRegExp('/\d{10}/', $str);
-    }    
+    }
 
     /** @test */
     public function strictOccurrences()
@@ -229,5 +229,20 @@ class Test extends \PHPUnit\Framework\TestCase
         $this->assertContains($result[0], $dictionary);
         $this->assertContains($result[1], $dictionary);
         $this->assertContains($result[2], $dictionary);
+    }
+
+    /** @test */
+    public function perfectScore()
+    {
+        $string = '1a4bcT@Y';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Strict(1));
+
+        $this->assertEquals($password->score($string), 100);
     }
 }
