@@ -354,11 +354,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
         $this->assertEquals($password->score($string), 100);
-    }    
 
-    /** @test */
-    public function checkEfficientClassicParseLetter()
-    {
         $string = 'ea';
 
         $password = new Password();
@@ -368,12 +364,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
         $this->assertEquals($password->score($string), 0);
-    }
 
-
-    /** @test */
-    public function checkEfficientUppercaseParseLetter()
-    {
         $string = 'EA';
 
         $password = new Password();
@@ -383,11 +374,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
         $this->assertEquals($password->score($string), 0);
-    }   
 
-    /** @test */
-    public function checkEfficientAccentedParseLetter()
-    {
         $string = 'éèà';
 
         $password = new Password();
@@ -397,11 +384,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
         $this->assertEquals($password->score($string), 0);
-    }    
 
-    /** @test */
-    public function checkEfficientAccentedUppercaseParseLetter()
-    {
         $string = 'ÉÈÀ';
 
         $password = new Password();
