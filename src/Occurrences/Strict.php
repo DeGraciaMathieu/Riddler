@@ -12,4 +12,9 @@ class Strict extends BaseOccurrence implements Occurrence
     {
         $this->size = $size;
     }
+
+    public function validateRange($value)
+    {
+        return (int) $value === $this->size;
+    }    
 }
