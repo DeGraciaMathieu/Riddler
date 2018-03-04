@@ -37,6 +37,6 @@ class Manager {
             return $criteria->passes($password);
         });
 
-        return (int) count($criteriasPassed) * 100 / count($criterias);
+        return (int) number_format(count($criteriasPassed) * 100 / count($criterias));
     }
 }
