@@ -38,14 +38,12 @@ class Criteria {
      */
     public function passes($password)
     {
-        $size = $this->occurrence->size();
+        $dictionary = $this->dictionary->handle();
 
-        $regex = preg_quote(implode($this->dictionary->handle()), '/');
+        $regex = preg_quote(implode($dictionary), '#');
 
-        $regex = array_fill(0, $size, '[' . $regex . ']');
+        $result = preg_match_all("#[" . $regex . "]#u", $password, $matches);
 
-        $regex = '/(?=.*' . implode('.*', $regex) . ')/';
-
-        return preg_match($regex, $password);
+        return $this->occurrence->validateRange($result);
     }
 }
