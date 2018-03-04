@@ -342,7 +342,7 @@ class Test extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function checkEfficientParseLetter()
+    public function checkLettersParticularities()
     {
         $string = 'eaEAéèàÉÈÀ';
 
