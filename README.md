@@ -76,7 +76,7 @@ It is possible to create its own class format implementing the interface DeGraci
 
 ## Check password score
 
-It is also possible to check that a password corresponds to the requirements of a list of criteria with the Score method. 
+It's also possible to check if a passwords matches the required list of criteria with the Score method. 
 
 ```php
 $password = new Password;
