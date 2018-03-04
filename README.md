@@ -23,7 +23,7 @@ Run in console below command to download package to your project:
 ```
 composer require degraciamathieu/riddler
 ```
-## Usage
+## Password generation usage
  
 A password is a set of one or more criteria composed of a dictionary and an occurrence. 
 
@@ -73,6 +73,23 @@ $password->generate();
 ```
 
 It is possible to create its own class format implementing the interface DeGraciaMathieu\Riddler\Contracts\Format
+
+## Check password score
+
+It is also possible to check that a password corresponds to the requirements of a list of criteria with the Score method. 
+
+```php
+$password = new Password;
+$password->addCriteria(new Digit(), new Strict(3));
+$password->addCriteria(new Letter(), new Between(3, 5));
+$password->score('123abcd'); // 100
+
+$password = new Password;
+$password->addCriteria(new Digit(), new Strict(3));
+$password->addCriteria(new Letter(), new Between(3, 5));
+$password->score('123a'); // 50
+```
+The value of the score method being the percentage of validated criteria.
 
 ## Examples
 ### Classics
