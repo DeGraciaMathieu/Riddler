@@ -239,17 +239,177 @@ class Test extends \PHPUnit\Framework\TestCase
     }
 
     /** @test */
-    public function perfectScore()
+    public function simpleStrictPerfectScore()
     {
-        $string = '1a4bcT@Y';
+        $string = '1a2b3c';
 
         $password = new Password();
 
-        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
-        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
-        $password->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Strict(1));
 
         $this->assertEquals($password->score($string), 100);
     }
+
+    /** @test */
+    public function simpleBetweenPerfectScore()
+    {
+        $string = '1a2b3c4';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Between(3, 5));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+
+        $this->assertEquals($password->score($string), 100);
+    }    
+
+    /** @test */
+    public function simpleMixedPerfectScore()
+    {
+        $string = '1a2b3cde';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+
+        $this->assertEquals($password->score($string), 100);
+    } 
+
+    /** @test */
+    public function simpleMixedIncompleteScore()
+    {
+        $string = '1a2bc';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+
+        $this->assertEquals($password->score($string), 50);
+    } 
+
+    /** @test */
+    public function complexStrictPerfectScore()
+    {
+        $string = '123abcABC[&+àáâÀÁÂ';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 100);
+    }
+
+    /** @test */
+    public function complexStrictIncompleteScore()
+    {
+        $string = '12abcAB[&+àáâÀÁÂ';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 67);
+    }
+
+    /** @test */
+    public function complexMixedPerfectScore()
+    {
+        $string = '123abcdEFG[&+éèàÒÓÔ';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Between(3, 5));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Between(3, 5));
+
+        $this->assertEquals($password->score($string), 100);
+    }
+
+    /** @test */
+    public function checkEfficientParseLetter()
+    {
+        $string = 'eaEAéèàÉÈÀ';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 100);
+    }    
+
+    /** @test */
+    public function checkEfficientClassicParseLetter()
+    {
+        $string = 'ea';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 0);
+    }
+
+
+    /** @test */
+    public function checkEfficientUppercaseParseLetter()
+    {
+        $string = 'EA';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 0);
+    }   
+
+    /** @test */
+    public function checkEfficientAccentedParseLetter()
+    {
+        $string = 'éèà';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 0);
+    }    
+
+    /** @test */
+    public function checkEfficientAccentedUppercaseParseLetter()
+    {
+        $string = 'ÉÈÀ';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+
+        $this->assertEquals($password->score($string), 0);
+    }                          
 }
