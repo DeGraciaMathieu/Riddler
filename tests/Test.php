@@ -262,7 +262,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
         $this->assertEquals($password->score($string), 100);
-    }    
+    }
 
     /** @test */
     public function simpleMixedPerfectScore()
@@ -275,7 +275,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
         $this->assertEquals($password->score($string), 100);
-    } 
+    }
 
     /** @test */
     public function simpleMixedIncompleteScore()
@@ -288,7 +288,7 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
         $this->assertEquals($password->score($string), 50);
-    } 
+    }
 
     /** @test */
     public function complexStrictPerfectScore()
@@ -394,5 +394,29 @@ class Test extends \PHPUnit\Framework\TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
 
         $this->assertEquals($password->score($string), 0);
-    }                          
+    }
+
+    /** @test */
+    public function passwordWithoutLetterOk()
+    {
+        $string = '0123';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\None());
+
+        $this->assertEquals($password->score($string), 100);
+    }
+
+    /** @test */
+    public function passwordWithoutLetterFail()
+    {
+        $string = '0123a';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\None());
+
+        $this->assertEquals($password->score($string), 0);
+    }
 }
