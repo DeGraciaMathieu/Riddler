@@ -13,4 +13,12 @@ abstract class BaseOccurrence
     {
         return $this->size;
     }
+
+    /**
+     * Valide la range de l'occurence
+     *
+     * @param integer $value
+     * @return integer
+     */
+    abstract public function validate($value);
 }

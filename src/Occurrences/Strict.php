@@ -1,7 +1,7 @@
 <?php
 
 namespace DeGraciaMathieu\Riddler\Occurrences;
-    
+
 use DeGraciaMathieu\Riddler\Contracts\Occurrence;
 
 class Strict extends BaseOccurrence implements Occurrence
@@ -13,8 +13,14 @@ class Strict extends BaseOccurrence implements Occurrence
         $this->size = $size;
     }
 
-    public function validateRange($value)
+    /**
+     * Valide la range de l'occurence
+     *
+     * @param integer $value
+     * @return integer
+     */
+    public function validate($value)
     {
         return (int) $value === $this->size;
-    }    
+    }
 }
