@@ -2,7 +2,9 @@
 
 namespace DeGraciaMathieu\Riddler\Occurrences;
 
-abstract class BaseOccurrence
+use DeGraciaMathieu\Riddler\Contracts\Occurrence;
+
+class None implements Occurrence
 {
     /**
      * Retourne la taille de l'occurence
@@ -11,7 +13,7 @@ abstract class BaseOccurrence
      */
     public function size()
     {
-        return $this->size;
+        return 0;
     }
 
     /**
@@ -20,5 +22,8 @@ abstract class BaseOccurrence
      * @param integer $value
      * @return integer
      */
-    abstract public function validate($value);
+    public function validate($value)
+    {
+        return (int) $value === 0;
+    }
 }

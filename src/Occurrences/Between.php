@@ -1,7 +1,7 @@
 <?php
 
 namespace DeGraciaMathieu\Riddler\Occurrences;
-    
+
 use DeGraciaMathieu\Riddler\Contracts\Occurrence;
 
 class Between extends BaseOccurrence implements Occurrence
@@ -17,7 +17,13 @@ class Between extends BaseOccurrence implements Occurrence
         $this->size = rand($smaller, $bigger);
     }
 
-    public function validateRange($value)
+    /**
+     * Valide la range de l'occurence
+     *
+     * @param integer $value
+     * @return integer
+     */
+    public function validate($value)
     {
         return $value >= $this->smaller && $value <= $this->bigger;
     }

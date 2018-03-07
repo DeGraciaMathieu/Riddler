@@ -44,6 +44,6 @@ class Criteria {
 
         $result = preg_match_all("#[" . $regex . "]#u", $password, $matches);
 
-        return $this->occurrence->validateRange($result);
+        return $this->occurrence->validate($result);
     }
 }

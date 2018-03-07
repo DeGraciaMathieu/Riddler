@@ -10,4 +10,12 @@ interface Occurrence
      * @return integer
      */
     public function size();
+
+    /**
+     * Valide la range de l'occurence
+     *
+     * @param integer $value
+     * @return integer
+     */
+    public function validate($value);
 }
