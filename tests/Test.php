@@ -360,8 +360,8 @@ class Test extends \PHPUnit\Framework\TestCase
         $password = new Password();
 
         $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
-        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
-        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(2));
 
         $this->assertEquals($password->score($string), 0);
 
@@ -370,8 +370,8 @@ class Test extends \PHPUnit\Framework\TestCase
         $password = new Password();
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
-        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
-        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(2));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(2));
 
         $this->assertEquals($password->score($string), 0);
 
@@ -381,7 +381,7 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
         $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
-        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(2));
 
         $this->assertEquals($password->score($string), 0);
 
@@ -391,9 +391,30 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(2));
         $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
-        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(2));
 
         $this->assertEquals($password->score($string), 0);
+    }
+
+    /** @test */
+    public function generatePasswordWithNoneOccurrence()
+    {
+        $password = new Password();
+
+        $digit = new Dictionaries\Digit();
+        $letter = new Dictionaries\Letter();
+
+        $password->addCriteria($digit, new Occurrences\Strict(3));
+        $password->addCriteria($letter, new Occurrences\None());
+
+        $str = $password->generate();
+
+        $this->assertNotEmpty($str);
+
+        $this->assertEquals(3, mb_strlen($str));
+
+        $this->assertRegExp('/[' . implode($digit->handle()) . ']{3}/', $str);        
+        $this->assertRegExp('/[' . implode($letter->handle()) . ']{0}/', $str);        
     }
 
     /** @test */
