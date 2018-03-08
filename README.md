@@ -38,6 +38,7 @@ The available dictionaries are :
 Available occurrences :
 * Strict
 * Between
+* None
 
 ```php
 require 'vendor\autoload.php';
