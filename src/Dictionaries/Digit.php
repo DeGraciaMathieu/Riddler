@@ -4,7 +4,7 @@ namespace DeGraciaMathieu\Riddler\Dictionaries;
 
 use DeGraciaMathieu\Riddler\Contracts\Dictionary;
 
-class Digit implements Dictionary
+class Digit extends AbstractDictionary implements Dictionary
 {
     public function handle()
     {

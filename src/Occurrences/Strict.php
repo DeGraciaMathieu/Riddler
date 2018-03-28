@@ -23,4 +23,9 @@ class Strict extends BaseOccurrence implements Occurrence
     {
         return (int) $value === $this->size;
     }
+
+    public function getName()
+    {
+        return 'strict_' . $this->size;
+    }    
 }

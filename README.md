@@ -92,6 +92,30 @@ $password->score('123a'); // 50
 ```
 The value of the score method being the percentage of validated criteria.
 
+## Check password passed
+
+```php
+$password = new Password;
+$password->addCriteria(new Digit(), new Strict(3));
+$password->addCriteria(new Letter(), new Between(3, 5));
+$password->passed('123a');
+
+// [
+//     ['name' => 'digit_strict_3', 'passed' => true],
+//     ['name' => 'letter_between_3_5', 'passed' => false],
+// ]
+```
+
+```php
+$password = new Password;
+$password->addNamedCriteria('MyName', new Digit(), new Strict(3));
+$password->passed('123');
+
+// [
+//     ['name' => 'MyName', 'passed' => true],
+// ]
+```
+
 ## Examples
 ### Classics
 

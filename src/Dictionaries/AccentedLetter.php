@@ -4,7 +4,7 @@ namespace DeGraciaMathieu\Riddler\Dictionaries;
 
 use DeGraciaMathieu\Riddler\Contracts\Dictionary;
 
-class AccentedLetter  implements Dictionary
+class AccentedLetter extends AbstractDictionary implements Dictionary
 {
     public function handle()
     {

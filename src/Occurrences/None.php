@@ -26,4 +26,9 @@ class None implements Occurrence
     {
         return (int) $value === 0;
     }
+
+    public function getName()
+    {
+        return 'none';
+    }    
 }

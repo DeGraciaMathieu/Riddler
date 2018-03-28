@@ -27,4 +27,9 @@ class Between extends BaseOccurrence implements Occurrence
     {
         return $value >= $this->smaller && $value <= $this->bigger;
     }
+
+    public function getName()
+    {
+        return 'between_' . $this->smaller . '_' . $this->bigger;
+    }
 }

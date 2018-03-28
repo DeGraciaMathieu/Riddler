@@ -17,7 +17,12 @@ class Password {
 
     public function addCriteria(Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
-        $buildCriteria = $this->manager->buildCriteria($dictionary, $occurrence);
+        $this->addNamedCriteria(null, $dictionary, $occurrence); 
+    }
+
+    public function addNamedCriteria($name, Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
+    {
+        $buildCriteria = $this->manager->buildCriteria($name, $dictionary, $occurrence);
 
         $this->criterias[] = $buildCriteria;
     }
@@ -50,4 +55,9 @@ class Password {
     {
         return $this->manager->score($value, $this->criterias);
     }
+
+    public function passed($value)
+    {
+        return $this->manager->passed($value, $this->criterias);
+    }    
 }

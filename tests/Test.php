@@ -208,7 +208,7 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $occurrence = new Occurrences\Strict(5);
 
-        $criteria = new Criteria($dictionary, $occurrence);
+        $criteria = new Criteria(null, $dictionary, $occurrence);
 
         $result = $criteria->build();
 
@@ -227,7 +227,7 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $occurrence = new Occurrences\Between(3, 5);
 
-        $criteria = new Criteria($dictionary, $occurrence);
+        $criteria = new Criteria(null, $dictionary, $occurrence);
 
         $result = $criteria->build();
 
@@ -440,4 +440,155 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($password->score($string), 0);
     }
+
+    /** @test */
+    public function criteriaWithName()
+    {
+        $dictionary = new Dictionaries\Letter();
+
+        $occurrence = new Occurrences\Strict(5);
+
+        $criteria = new Criteria('name', $dictionary, $occurrence);
+
+        $this->assertEquals($criteria->getName(), 'name');
+    }
+
+    /** @test */
+    public function criteriaWithDefaultName()
+    {
+        $dictionary = new Dictionaries\Letter();
+
+        $occurrence = new Occurrences\Strict(5);
+
+        $criteria = new Criteria(null, $dictionary, $occurrence);
+
+        $this->assertEquals($criteria->getName(), 'letter_strict_5');
+
+        $dictionary = new Dictionaries\Digit();
+
+        $occurrence = new Occurrences\Between(1, 5);
+
+        $criteria = new Criteria(null, $dictionary, $occurrence);
+
+        $this->assertEquals($criteria->getName(), 'digit_between_1_5');      
+
+        $dictionary = new Dictionaries\UppercaseLetter();
+
+        $occurrence = new Occurrences\None();
+
+        $criteria = new Criteria(null, $dictionary, $occurrence);
+
+        $this->assertEquals($criteria->getName(), 'uppercaseletter_none');            
+    }    
+
+    /** @test */
+    public function simpleStrictPerfectPassed()
+    {
+        $string = '1a2b3c';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
+
+        $expectedArray = [
+            [
+                'name' => 'digit_strict_3',
+                'passed' => true,
+            ],
+            [
+                'name' => 'letter_strict_3',
+                'passed' => true,
+            ],            
+        ];
+
+        $this->assertEquals($password->passed($string), $expectedArray);
+    }
+
+    /** @test */
+    public function simpleBetweenPerfectPassed()
+    {
+        $string = '1a2b3c4';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Between(3, 5));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+
+        $expectedArray = [
+            [
+                'name' => 'digit_between_3_5',
+                'passed' => true,
+            ],
+            [
+                'name' => 'letter_between_3_5',
+                'passed' => true,
+            ],
+        ];
+
+        $this->assertEquals($password->passed($string), $expectedArray);
+    }
+
+    /** @test */
+    public function mixedIncompletePassed()
+    {
+        $string = '1a2bcABC[&+Ó';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(3));
+        $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+        $password->addCriteria(new Dictionaries\SpecialCharacter(), new Occurrences\Between(1, 2));
+        $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(1));
+
+        $expectedArray = [
+            [
+                'name' => 'digit_strict_3',
+                'passed' => false,
+            ],
+            [
+                'name' => 'uppercaseletter_strict_3',
+                'passed' => true,
+            ],            
+            [
+                'name' => 'letter_between_3_5',
+                'passed' => true,
+            ],
+            [
+                'name' => 'specialcharacter_between_1_2',
+                'passed' => false,
+            ], 
+            [
+                'name' => 'accenteduppercaseletter_strict_1',
+                'passed' => true,
+            ],                       
+        ];
+
+        $this->assertEquals($password->passed($string), $expectedArray);
+    } 
+
+    /** @test */
+    public function mixedPerfecPassedWithName()
+    {
+        $string = '1a2b3c';
+
+        $password = new Password();
+
+        $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
+        $password->addNamedCriteria('name', new Dictionaries\Letter(), new Occurrences\Between(3, 5));
+
+        $expectedArray = [
+            [
+                'name' => 'digit_strict_3',
+                'passed' => true,
+            ],
+            [
+                'name' => 'name',
+                'passed' => true,
+            ],
+        ];
+
+        $this->assertEquals($password->passed($string), $expectedArray);
+    } 
 }

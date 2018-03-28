@@ -6,9 +6,9 @@ use DeGraciaMathieu\Riddler\Contracts;
 
 class Manager {
 
-    public function buildCriteria(Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
+    public function buildCriteria($name, Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
-        return new Criteria($dictionary, $occurrence);
+        return new Criteria($name, $dictionary, $occurrence);
     }
 
     public function generate(array $criteriaBuilderList)
@@ -38,5 +38,20 @@ class Manager {
         });
 
         return (int) number_format(count($criteriasPassed) * 100 / count($criterias));
+    }
+
+    public function passed($password, array $criterias)
+    {
+        $criteriasPassed = array_map(function ($criteria) use ($password) {
+
+            return [
+                'name' => $criteria->getName(),
+                'passed' => $criteria->passes($password)
+
+            ];
+
+        }, $criterias);
+
+        return $criteriasPassed;
     }
 }

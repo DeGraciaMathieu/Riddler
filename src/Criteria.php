@@ -2,15 +2,33 @@
 
 namespace DeGraciaMathieu\Riddler;
 
+use DeGraciaMathieu\Riddler\Contracts;
+
 class Criteria {
 
+    protected $name;
 	protected $dictionary;
 	protected $occurrence;
 
-    public function __construct($dictionary, $occurrence)
+    public function __construct($name, Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
         $this->dictionary = $dictionary;
         $this->occurrence = $occurrence;
+        $this->setName($name);
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    public function setName($name)
+    {
+        if (! $name) {
+             $name = $this->dictionary->getName() . '_' . $this->occurrence->getName();
+        }
+
+        return $this->name = $name;
     }
 
     public function build()

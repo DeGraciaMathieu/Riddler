@@ -4,7 +4,7 @@ namespace DeGraciaMathieu\Riddler\Dictionaries;
     
 use DeGraciaMathieu\Riddler\Contracts\Dictionary;
 
-class SpecialCharacter implements Dictionary
+class SpecialCharacter extends AbstractDictionary implements Dictionary
 {
     public function handle()
     {

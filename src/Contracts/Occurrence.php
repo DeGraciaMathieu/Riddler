@@ -18,4 +18,6 @@ interface Occurrence
      * @return integer
      */
     public function validate($value);
+
+    public function getName();    
 }

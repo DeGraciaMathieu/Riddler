@@ -4,7 +4,7 @@ namespace DeGraciaMathieu\Riddler\Dictionaries;
     
 use DeGraciaMathieu\Riddler\Contracts\Dictionary;
 
-class UppercaseLetter implements Dictionary
+class UppercaseLetter extends AbstractDictionary implements Dictionary
 {
     public function handle()
     {
