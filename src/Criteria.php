@@ -4,11 +4,12 @@ namespace DeGraciaMathieu\Riddler;
 
 use DeGraciaMathieu\Riddler\Contracts;
 
-class Criteria {
+class Criteria
+{
 
     protected $name;
-	protected $dictionary;
-	protected $occurrence;
+    protected $dictionary;
+    protected $occurrence;
 
     public function __construct($name, Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
@@ -39,7 +40,6 @@ class Criteria {
         $tmp = [];
 
         for ($i=0; $i < $size; $i++) {
-
             shuffle($dictionary);
 
             $tmp[] = $dictionary[0];
