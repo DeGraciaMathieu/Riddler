@@ -4,7 +4,8 @@ namespace DeGraciaMathieu\Riddler;
 
 use DeGraciaMathieu\Riddler\Contracts;
 
-class Password {
+class Password
+{
 
     protected $criterias = [];
 
@@ -17,7 +18,7 @@ class Password {
 
     public function addCriteria(Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
-        $this->addNamedCriteria(null, $dictionary, $occurrence); 
+        $this->addNamedCriteria(null, $dictionary, $occurrence);
     }
 
     public function addNamedCriteria($name, Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
@@ -59,5 +60,5 @@ class Password {
     public function passed($value)
     {
         return $this->manager->passed($value, $this->criterias);
-    }    
+    }
 }

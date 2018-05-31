@@ -19,5 +19,5 @@ interface Occurrence
      */
     public function validate($value);
 
-    public function getName();    
+    public function getName();
 }

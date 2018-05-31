@@ -413,8 +413,8 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(3, mb_strlen($str));
 
-        $this->assertRegExp('/[' . implode($digit->handle()) . ']{3}/', $str);        
-        $this->assertRegExp('/[' . implode($letter->handle()) . ']{0}/', $str);        
+        $this->assertRegExp('/[' . implode($digit->handle()) . ']{3}/', $str);
+        $this->assertRegExp('/[' . implode($letter->handle()) . ']{0}/', $str);
     }
 
     /** @test */
@@ -470,7 +470,7 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $criteria = new Criteria(null, $dictionary, $occurrence);
 
-        $this->assertEquals($criteria->getName(), 'digit_between_1_5');      
+        $this->assertEquals($criteria->getName(), 'digit_between_1_5');
 
         $dictionary = new Dictionaries\UppercaseLetter();
 
@@ -478,8 +478,8 @@ class Test extends \PHPUnit\Framework\TestCase
 
         $criteria = new Criteria(null, $dictionary, $occurrence);
 
-        $this->assertEquals($criteria->getName(), 'uppercaseletter_none');            
-    }    
+        $this->assertEquals($criteria->getName(), 'uppercaseletter_none');
+    }
 
     /** @test */
     public function simpleStrictPerfectPassed()
@@ -499,7 +499,7 @@ class Test extends \PHPUnit\Framework\TestCase
             [
                 'name' => 'letter_strict_3',
                 'passed' => true,
-            ],            
+            ],
         ];
 
         $this->assertEquals($password->passed($string), $expectedArray);
@@ -550,7 +550,7 @@ class Test extends \PHPUnit\Framework\TestCase
             [
                 'name' => 'uppercaseletter_strict_3',
                 'passed' => true,
-            ],            
+            ],
             [
                 'name' => 'letter_between_3_5',
                 'passed' => true,
@@ -558,15 +558,15 @@ class Test extends \PHPUnit\Framework\TestCase
             [
                 'name' => 'specialcharacter_between_1_2',
                 'passed' => false,
-            ], 
+            ],
             [
                 'name' => 'accenteduppercaseletter_strict_1',
                 'passed' => true,
-            ],                       
+            ],
         ];
 
         $this->assertEquals($password->passed($string), $expectedArray);
-    } 
+    }
 
     /** @test */
     public function mixedPerfecPassedWithName()
@@ -590,5 +590,5 @@ class Test extends \PHPUnit\Framework\TestCase
         ];
 
         $this->assertEquals($password->passed($string), $expectedArray);
-    } 
+    }
 }

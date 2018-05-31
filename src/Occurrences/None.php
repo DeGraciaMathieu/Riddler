@@ -30,5 +30,5 @@ class None implements Occurrence
     public function getName()
     {
         return 'none';
-    }    
+    }
 }
