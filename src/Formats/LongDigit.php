@@ -15,4 +15,3 @@ class LongDigit implements Format
         ];
     }
 }
-
