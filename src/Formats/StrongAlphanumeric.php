@@ -17,4 +17,3 @@ class StrongAlphanumeric implements Format
         ];
     }
 }
-
