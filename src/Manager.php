@@ -4,7 +4,8 @@ namespace DeGraciaMathieu\Riddler;
 
 use DeGraciaMathieu\Riddler\Contracts;
 
-class Manager {
+class Manager
+{
 
     public function buildCriteria($name, Contracts\Dictionary $dictionary, Contracts\Occurrence $occurrence)
     {
@@ -49,7 +50,6 @@ class Manager {
                 'passed' => $criteria->passes($password)
 
             ];
-
         }, $criterias);
 
         return $criteriasPassed;
