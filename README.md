@@ -4,11 +4,10 @@
 <p align="center">
 <a href="https://www.codacy.com/app/DeGraciaMathieu/Riddler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeGraciaMathieu/Riddler&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/d662a4fa526a4a709d3ad1991cba2533" alt="Codacy Badge"></a>
 <a href="https://scrutinizer-ci.com/g/degraciamathieu/riddler/?branch=master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/build-status/master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/build.png?b=master" alt="Build Status"></a>
+<a href="https://travis-ci.org/DeGraciaMathieu/Riddler"><img src="https://travis-ci.org/DeGraciaMathieu/Riddler.svg?branch=master" alt="Build Status"></a>
 <a href="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/?branch=master"><img src="https://scrutinizer-ci.com/g/DeGraciaMathieu/Riddler/badges/coverage.png?b=master" alt="Code Coverage"></a>
 <a href="https://packagist.org/packages/degraciamathieu/riddler"><img src="https://img.shields.io/packagist/v/degraciamathieu/riddler.svg?style=flat-square" alt="Latest Version on Packagist"></a>
 <a href='https://packagist.org/packages/degraciamathieu/riddler'><img src='https://img.shields.io/packagist/dt/degraciamathieu/riddler.svg?style=flat-square' /></a>
-<a href="https://codeclimate.com/github/DeGraciaMathieu/Riddler/maintainability"><img src="https://api.codeclimate.com/v1/badges/306a5feb592e960c6d3e/maintainability" /></a>
 </p>
 
 
