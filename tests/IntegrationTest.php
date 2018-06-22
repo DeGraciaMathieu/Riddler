@@ -2,12 +2,12 @@
 
 namespace DeGraciaMathieu\Riddler\Tests;
 
+use PHPUnit\Framework\TestCase;
 use DeGraciaMathieu\Riddler\Formats;
 use DeGraciaMathieu\Riddler\Criteria;
 use DeGraciaMathieu\Riddler\Password;
 use DeGraciaMathieu\Riddler\Occurrences;
 use DeGraciaMathieu\Riddler\Dictionaries;
-use PHPUnit\Framework\TestCase;
 
 class IntegrationTest extends TestCase
 {
