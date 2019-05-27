@@ -209,8 +209,8 @@ class IntegrationTest extends TestCase
 
         $result = $criteria->build();
 
-        $this->assertTrue(is_array($result));
-        $this->assertEquals(5, count($result));
+        $this->assertInternalType('array', $result);
+        $this->assertCount(5, $result);
         $this->assertContains($result[0], $dictionary->handle());
         $this->assertContains($result[1], $dictionary->handle());
         $this->assertContains($result[2], $dictionary->handle());
@@ -228,8 +228,9 @@ class IntegrationTest extends TestCase
 
         $result = $criteria->build();
 
-        $this->assertTrue(is_array($result));
-        $this->assertTrue(count($result) >= 3 && count($result) <= 5);
+        $this->assertInternalType('array', $result);
+        $this->assertGreaterThanOrEqual(3, count($result));
+        $this->assertLessThanOrEqual(5, count($result));
         $this->assertContains($result[0], $dictionary->handle());
         $this->assertContains($result[1], $dictionary->handle());
         $this->assertContains($result[2], $dictionary->handle());
@@ -245,7 +246,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
     }
 
     /** @test */
@@ -258,7 +259,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Between(3, 5));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
     }
 
     /** @test */
@@ -271,7 +272,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
     }
 
     /** @test */
@@ -284,7 +285,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals($password->score($string), 50);
+        $this->assertEquals(50, $password->score($string));
     }
 
     /** @test */
@@ -301,7 +302,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
     }
 
     /** @test */
@@ -318,7 +319,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
-        $this->assertEquals($password->score($string), 67);
+        $this->assertEquals(67, $password->score($string));
     }
 
     /** @test */
@@ -335,7 +336,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
     }
 
     /** @test */
@@ -350,7 +351,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
 
         $string = 'ea';
 
@@ -423,7 +424,7 @@ class IntegrationTest extends TestCase
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\None());
 
-        $this->assertEquals($password->score($string), 100);
+        $this->assertEquals(100, $password->score($string));
     }
 
     /** @test */
@@ -435,7 +436,7 @@ class IntegrationTest extends TestCase
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\None());
 
-        $this->assertEquals($password->score($string), 0);
+        $this->assertEquals(0, $password->score($string));
     }
 
     /** @test */
@@ -447,7 +448,7 @@ class IntegrationTest extends TestCase
 
         $criteria = new Criteria('name', $dictionary, $occurrence);
 
-        $this->assertEquals($criteria->getName(), 'name');
+        $this->assertEquals('name', $criteria->getName());
     }
 
     /** @test */
@@ -499,7 +500,7 @@ class IntegrationTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($password->passed($string), $expectedArray);
+        $this->assertEquals($expectedArray, $password->passed($string));
     }
 
     /** @test */
@@ -523,7 +524,7 @@ class IntegrationTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($password->passed($string), $expectedArray);
+        $this->assertEquals($expectedArray, $password->passed($string));
     }
 
     /** @test */
@@ -562,7 +563,7 @@ class IntegrationTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($password->passed($string), $expectedArray);
+        $this->assertEquals($expectedArray, $password->passed($string));
     }
 
     /** @test */
@@ -586,6 +587,6 @@ class IntegrationTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($password->passed($string), $expectedArray);
+        $this->assertEquals($expectedArray, $password->passed($string));
     }
 }
