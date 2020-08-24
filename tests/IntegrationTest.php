@@ -48,7 +48,7 @@ class IntegrationTest extends TestCase
 
         $this->assertNotEmpty($str);
 
-        $this->assertEquals(15, mb_strlen($str));
+        $this->assertSame(15, mb_strlen($str));
 
         $this->assertRegExp('/[a-zA-Z0-9]/', $str);
     }
@@ -130,7 +130,7 @@ class IntegrationTest extends TestCase
 
         $this->assertNotEmpty($str);
 
-        $this->assertEquals(15, mb_strlen($str));
+        $this->assertSame(15, mb_strlen($str));
 
         $this->assertRegExp('/[a-zA-Z0-9]/', $str);
     }
@@ -146,7 +146,7 @@ class IntegrationTest extends TestCase
 
         $this->assertNotEmpty($str);
 
-        $this->assertEquals(30, mb_strlen($str));
+        $this->assertSame(30, mb_strlen($str));
 
         $this->assertRegExp('/[a-zA-Z0-9]/', $str);
     }
@@ -246,7 +246,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Strict(3));
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
     }
 
     /** @test */
@@ -259,7 +259,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Between(3, 5));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
     }
 
     /** @test */
@@ -272,7 +272,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
     }
 
     /** @test */
@@ -285,7 +285,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\Digit(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals(50, $password->score($string));
+        $this->assertSame(50, $password->score($string));
     }
 
     /** @test */
@@ -302,7 +302,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
     }
 
     /** @test */
@@ -319,7 +319,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
-        $this->assertEquals(67, $password->score($string));
+        $this->assertSame(67, $password->score($string));
     }
 
     /** @test */
@@ -336,7 +336,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Between(3, 5));
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
     }
 
     /** @test */
@@ -351,7 +351,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(3));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(3));
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
 
         $string = 'ea';
 
@@ -361,7 +361,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(2));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(2));
 
-        $this->assertEquals($password->score($string), 0);
+        $this->assertSame($password->score($string), 0);
 
         $string = 'EA';
 
@@ -371,7 +371,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(2));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(2));
 
-        $this->assertEquals($password->score($string), 0);
+        $this->assertSame($password->score($string), 0);
 
         $string = 'éèà';
 
@@ -381,7 +381,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
         $password->addCriteria(new Dictionaries\AccentedUppercaseLetter(), new Occurrences\Strict(2));
 
-        $this->assertEquals($password->score($string), 0);
+        $this->assertSame($password->score($string), 0);
 
         $string = 'ÉÈÀ';
 
@@ -391,7 +391,7 @@ class IntegrationTest extends TestCase
         $password->addCriteria(new Dictionaries\UppercaseLetter(), new Occurrences\Strict(2));
         $password->addCriteria(new Dictionaries\AccentedLetter(), new Occurrences\Strict(2));
 
-        $this->assertEquals($password->score($string), 0);
+        $this->assertSame($password->score($string), 0);
     }
 
     /** @test */
@@ -409,7 +409,7 @@ class IntegrationTest extends TestCase
 
         $this->assertNotEmpty($str);
 
-        $this->assertEquals(3, mb_strlen($str));
+        $this->assertSame(3, mb_strlen($str));
 
         $this->assertRegExp('/[' . implode($digit->handle()) . ']{3}/', $str);
         $this->assertRegExp('/[' . implode($letter->handle()) . ']{0}/', $str);
@@ -424,7 +424,7 @@ class IntegrationTest extends TestCase
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\None());
 
-        $this->assertEquals(100, $password->score($string));
+        $this->assertSame(100, $password->score($string));
     }
 
     /** @test */
@@ -436,7 +436,7 @@ class IntegrationTest extends TestCase
 
         $password->addCriteria(new Dictionaries\Letter(), new Occurrences\None());
 
-        $this->assertEquals(0, $password->score($string));
+        $this->assertSame(0, $password->score($string));
     }
 
     /** @test */
@@ -448,7 +448,7 @@ class IntegrationTest extends TestCase
 
         $criteria = new Criteria('name', $dictionary, $occurrence);
 
-        $this->assertEquals('name', $criteria->getName());
+        $this->assertSame('name', $criteria->getName());
     }
 
     /** @test */
